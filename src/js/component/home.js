@@ -141,6 +141,35 @@ export function Home() {
 	]);
 
 	const audio = useRef();
+	const [songActual, setSongActual] = useState();
+
+	const playPause = () => {
+		if (audio.current.paused) {
+			audio.current.play();
+		} else if (audio.current.play) {
+			audio.current.pause();
+		}
+	};
+	const next = () => {
+		let nextSong = songActual + 1;
+		if (nextSong > songList.length - 1) {
+			nextSong = 0;
+		}
+		cambiarSrcAudio(songList[nextSong].url, nextSong);
+		playPause();
+	};
+
+	const back = () => {
+		let backSong = songActual - 1;
+		cambiarSrcAudio(songList[backSong].url, backSong);
+		playPause();
+	};
+
+	const cambiarSrcAudio = (url, i) => {
+		const linkFijo = "https://assets.breatheco.de/apis/sound/";
+		audio.current.src = linkFijo + url;
+		setSongActual(i);
+	};
 
 	// const escuchar = () => {
 	// 	audio.current.src = linkFijo + objeto.url;
@@ -151,21 +180,29 @@ export function Home() {
 	return (
 		<>
 			{songList.map((objeto, index) => {
-				const linkFijo = "https://assets.breatheco.de/apis/sound/";
 				// console.log(objeto.url);
 
 				return (
-					<div key={index}>
-						{/* // onClick={escuchar}> */}
-						{objeto.id}
-						{objeto.name}
-						<audio ref={audio} src={linkFijo + objeto.url}></audio>
+					<div
+						className={
+							"estilos " + (songActual == index ? "active" : "")
+						}
+						key={index}
+						onClick={() => {
+							cambiarSrcAudio(objeto.url, index);
+							audio.current.play();
+						}}>
+						<span>{objeto.id}</span>
+						<span>{objeto.name}</span>
 					</div>
 				);
 			})}
-			<button>⏪</button>
-			<button>⏯</button>
-			<button>⏩</button>
+			<audio
+				ref={audio}
+				src="https://assets.breatheco.de/apis/sound/files/mario/songs/castle.mp3"></audio>
+			<button onClick={back}>⏪</button>
+			<button onClick={playPause}>⏯</button>
+			<button onClick={next}>⏩</button>
 		</>
 	);
 }
