@@ -1,4 +1,9 @@
 @import "~bootstrap/scss/bootstrap.scss";
+.df{
+display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 button{
     margin: 1%;
@@ -6,19 +11,26 @@ button{
 }
 .botones{
     position: fixed;
-    bottom: 0;
+    bottom: 10px;
+    width: 40%;
+    background-color: rebeccapurple;
+    border-radius: 20px;
 }
 
+.box{
+    height: 100vh;
+}
 .estilos{
-    background-color: gainsboro;
     padding: 0.5%;
-    width: 60%;
+    width: 100%;
     cursor: pointer;
 }
 
-.contendedor{
-    height: 8ovh;
-    overflow: scroll;
+.contenedor{
+    background-color: gainsboro;
+    width: 60%;
+    height: 70%;
+    overflow-y: scroll;
 
 }
 span{
@@ -38,3 +50,26 @@ span{
     import 'relative/path/to/stylesheet.scss';
 
 */
+
+
+// estilo del scroll copiado de internt
+.contenedor::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+.contenedor::-webkit-scrollbar:vertical {
+    width:10px;
+}
+.contenedor::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+    display: none;
+} 
+.contenedor::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+.contenedor::-webkit-scrollbar-thumb {
+    background-color: rgba(177, 125, 241, 0.2);
+    border-radius: 20px;
+    border: 2px solid rebeccapurple;
+}
+.contenedor::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}
