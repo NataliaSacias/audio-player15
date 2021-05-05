@@ -13,11 +13,12 @@ button{
     background-color: gainsboro;
     padding: 0.5%;
     width: 60%;
+    cursor: pointer;
 }
 
 .contendedor{
     height: 8ovh;
-    overflow-y: scroll;
+    overflow: scroll;
 
 }
 span{

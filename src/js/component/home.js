@@ -161,6 +161,9 @@ export function Home() {
 
 	const back = () => {
 		let backSong = songActual - 1;
+		if (backSong < 0) {
+			backSong = songList.length - 1;
+		}
 		cambiarSrcAudio(songList[backSong].url, backSong);
 		playPause();
 	};
@@ -180,8 +183,6 @@ export function Home() {
 	return (
 		<div className="contenedor">
 			{songList.map((objeto, index) => {
-				// console.log(objeto.url);
-
 				return (
 					<div
 						className={
