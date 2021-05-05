@@ -178,7 +178,7 @@ export function Home() {
 	// console.log(songList[0].url);
 
 	return (
-		<>
+		<div className="contenedor">
 			{songList.map((objeto, index) => {
 				// console.log(objeto.url);
 
@@ -200,9 +200,11 @@ export function Home() {
 			<audio
 				ref={audio}
 				src="https://assets.breatheco.de/apis/sound/files/mario/songs/castle.mp3"></audio>
-			<button onClick={back}>⏪</button>
-			<button onClick={playPause}>⏯</button>
-			<button onClick={next}>⏩</button>
-		</>
+			<div className="botones">
+				<button onClick={back}>⏪</button>
+				<button onClick={playPause}>⏯</button>
+				<button onClick={next}>⏩</button>
+			</div>
+		</div>
 	);
 }
